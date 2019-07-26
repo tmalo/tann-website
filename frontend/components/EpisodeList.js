@@ -1,11 +1,15 @@
 import format from 'date-format'
 
+function cleanText(source) {
+  const regex = /(<([^>]+)>)/ig;
+  return source.replace(regex, '');  
+}
 const Episode = function (props) {
     var image = props.image
     if ((props.item.itunes.image.length>0))
         image = props.item.itunes.image;
     
-    var description = props.item.content.substring(0, 130) + "...";
+    var description = {__html: cleanText(props.item.content).substring(0, 140) + "..."};
     var pubDate = new Date(props.item.published);
     var strPubDate = format.asString("dd-MM-yyyy", pubDate);
     var audiourl = props.item.enclosures
@@ -15,7 +19,7 @@ const Episode = function (props) {
     if (typeof audiourl[0] !== 'undefined')
         url = audiourl[0].url;
 
-    console.log(url);
+    //console.log(url);
 
     return (
     <div className="col-md-6 rss-episode">
@@ -23,9 +27,8 @@ const Episode = function (props) {
         <div className="col p-2 d-flex flex-column position-static">
           <h3 className="mb-0">{props.item.title}</h3>
           <div className="mb-1 text-muted">{strPubDate}</div>
-          <p className="card-text mb-auto">
-              {description}
-            </p>
+          <p className="card-text mb-auto" dangerouslySetInnerHTML={description} />
+              
           <a href="#" className="stretched-link">Continue reading</a>
         </div>
         <div className="col-auto d-none d-lg-block">

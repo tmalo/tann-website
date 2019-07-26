@@ -1,2 +1,44 @@
 @import "./variables.scss";
-@import "../node_modules/bootstrap-scss/bootstrap.scss"
+@import "../node_modules/bootstrap-scss/bootstrap.scss";
+
+footer {
+    background-color: $white;
+    color: $body-bg;
+    @extend .pt-2;
+    @extend .pb-4;
+}
+
+ul.whereToListen {
+    display: flex;
+    list-style: none;
+    
+    li {
+        margin-right: 14px;
+    }
+}
+
+.newsletter {
+    background-color: $gray-600;
+    @extend .py-2;
+    @extend .mb-2;
+    h2 {
+        font-family: $font-family-sans-serif;
+        font-weight: bold;
+        color: $white;
+    }
+}
+
+.episodes {
+    h2 {
+        color: $white;
+    }
+    #episodeBlock {
+        height: 470px;
+        overflow: auto;
+    }
+ }
+.topContainer {
+    h1 {
+        color: $yellow;
+    }
+}

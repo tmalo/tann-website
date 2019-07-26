@@ -1,5 +1,25 @@
 // next.config.js
-const withSass = require('@zeit/next-sass')
-module.exports = withSass({
-  /* config options here */
-})
+const { error: envError, parsed: localEnv } = require('dotenv').config()
+const prod = process.env.NODE_ENV === "production";
+const { withPlugins, optional } = require('next-compose-plugins');
+const sass = require('@zeit/next-sass');
+const webpack = require('webpack');
+const pino = require("next-pino");
+
+if (envError) {
+    throw envError;
+}
+
+const nextConfig = {
+  webpack: (config, options) => {
+
+    // modify the `config` here
+	config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+    return config;
+  },
+};
+
+module.exports = withPlugins([
+  [sass],
+  [pino]
+], nextConfig);
