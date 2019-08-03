@@ -10,8 +10,15 @@ const Layout = props => (
       <title>{ props.title }</title>
       <meta charSet='utf-8' />
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      
+      <meta name="description"  
+      content="Site du Podcast 'Tann &amp; Konprann' produit par TiMalo." />
+    <meta name="keywords"  
+    content="timalo, ti-malo, malo, slam, guadeloupe, gwadloup, kreyol, créole, artiste, 
+    spoken word, podcast" />
+    {props.meta}
     </Head>
-    <Header />
+    <Header docs={props.links}/>
     <main role="main">    
       { props.children }
     </main>

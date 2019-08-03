@@ -12,21 +12,72 @@ import WhereToListen from '../components/where-to-listen';
 import MailchimpForm from '../components/mailchimp-form';
 import EpisodeList from '../components/EpisodeList';
 
+const links = {
+  rss: "https://anchor.fm/s/cb1379c/podcast/rss",
+  breaker: "https://www.breaker.audio/tann-and-konprann",
+  google: "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy9jYjEzNzljL3BvZGNhc3QvcnNz",
+  pocket: "https://pca.st/y5r0",
+  radiopublic: "https://radiopublic.com/tann-konprann-6BJw3M",
+  spotify: "https://open.spotify.com/show/1pw9hzE4mgTqsZN5rcQRCY",
+
+}
+
+
+const pageTitle = "Tann & Konprann, on pòdkas a TiMalo";
+const pageDescription = "A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa \
+  sé on lokazyon pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt lang-la pimyé.";
+
+const meta = (location) => {
+  function absolute(base, relative) {
+    var stack = base.split("/"),
+        parts = relative.split("/");
+    stack.pop(); // remove current file name (or empty string)
+                 // (omit if "base" is the current folder without trailing slash)
+    for (var i=0; i<parts.length; i++) {
+        if (parts[i] == ".")
+            continue;
+        if (parts[i] == "..")
+            stack.pop();
+        else
+            stack.push(parts[i]);
+    }
+    return stack.join("/");
+}
+  return (
+    <>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@tannkonprann" />
+    <meta name="twitter:creator" content="@timalo_officiel" />
+    <meta property="og:url" content={absolute(`${location.protocol}//${location.host}/`, 'index')} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" 
+    content={absolute(`${location.protocol}//${location.host}/`, '../static/artwork.jpg')} />     
+    </>   
+  );
+};
+
 const  Index = props => {
     var server = process.env.API_SERVER || '';
 
     return (
-        <Layout title="Home">
+        <Layout meta={meta(props.location)} title={pageTitle} links={props.docs}>
           <Jumbotron>
-              <Container className="topContainer">
+              <Container className="topContainer d-flex">
                 <Row>
                   <Col sm={4}><Image src="../static/artwork.jpg" fluid rounded /></Col>
-                  <Col sm={8}>
+                  <Col sm={6}>
                     <h1 className="display-3">Tann & Konprann</h1>
-                  <p>This is a template for a simple marketing or informational website. 
-                    It includes a large callout called a jumbotron and three supporting pieces of content. 
-                    Use it as a starting point to create something more unique.</p>
-                    <WhereToListen />
+                    <p lang="cpf-gp">A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa sé on lokazyon 
+                      pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt 
+                      lang-la pimyé. </p>
+
+                      <p lang="fr">Nous n'avons pas toujours l'occasion d'entendre du créole dans notre vie 
+                    de tous les jours. Ce podcast c'est l'opportunité d'entendre la langue, 
+                    de découvrir des textes et des auteurs créolophones et de s'attarder sur 
+                    du vocabulaire et des expressions.</p>
+ 
+                    <WhereToListen links={links} />
                   </Col>
                 </Row>
               </Container>
@@ -41,7 +92,7 @@ const  Index = props => {
               </Container>
               </div>
               <Container className="episodes">
-                <h2 className="display-4">episodes</h2>
+                <h2 className="display-4">epizod</h2>
                 <div id="episodeBlock">
                   <EpisodeList items={props.feed.items} image={props.feed.itunes.image}/>
                 </div>

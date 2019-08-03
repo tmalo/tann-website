@@ -96,7 +96,7 @@ export default class MailchimpForm extends React.Component {
                     </div>
                   <div className="form-group  col-md-3 align-self-end text-right align-top">
                     <button type="submit" id ="nlsubmit" name="Subscribe" className="mb-2 btn btn-danger border-white ">
-                        S"inscrire</button>
+                        S'inscrire</button>
                   </div>
                   <div id="mce-responses" className="clear">
                     <div className="response" id="mce-error-response" style={{display:'none'}}></div>

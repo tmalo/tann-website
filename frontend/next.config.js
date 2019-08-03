@@ -5,6 +5,7 @@ const { withPlugins, optional } = require('next-compose-plugins');
 const sass = require('@zeit/next-sass');
 const webpack = require('webpack');
 const pino = require("next-pino");
+const rawloader = require('raw-loader');
 
 if (envError) {
     throw envError;
@@ -12,10 +13,16 @@ if (envError) {
 
 const nextConfig = {
   webpack: (config, options) => {
-
     // modify the `config` here
+    config.module.rules.push({
+      test: /\.md$/i,
+      use: 'raw-loader'
+    });
+
+
 	config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
-    return config;
+  
+  return config;
   },
 };
 
@@ -23,3 +30,4 @@ module.exports = withPlugins([
   [sass],
   [pino]
 ], nextConfig);
+

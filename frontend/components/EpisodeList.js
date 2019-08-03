@@ -1,4 +1,6 @@
-import format from 'date-format'
+import format from 'date-format';
+import Logger from '../utils/logger';
+import Link from 'next/link';
 
 function cleanText(source) {
   const regex = /(<([^>]+)>)/ig;
@@ -6,10 +8,13 @@ function cleanText(source) {
 }
 const Episode = function (props) {
     var image = props.image
-    if ((props.item.itunes.image.length>0))
+    if ((props.item.itunes.image))
         image = props.item.itunes.image;
     
-    var description = {__html: cleanText(props.item.content).substring(0, 140) + "..."};
+    Logger.debug(props.item);
+
+    //var description ={__html: ''};
+    var description = {__html: cleanText(props.item.description).substring(0, 180) + "..."};
     var pubDate = new Date(props.item.published);
     var strPubDate = format.asString("dd-MM-yyyy", pubDate);
     var audiourl = props.item.enclosures
@@ -22,16 +27,18 @@ const Episode = function (props) {
     //console.log(url);
 
     return (
-    <div className="col-md-6 rss-episode">
+    <div className="col-lg-6 col-md-8 rss-episode">
       <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-200 position-relative">
         <div className="col p-2 d-flex flex-column position-static">
           <h3 className="mb-0">{props.item.title}</h3>
           <div className="mb-1 text-muted">{strPubDate}</div>
           <p className="card-text mb-auto" dangerouslySetInnerHTML={description} />
-              
-          <a href="#" className="stretched-link">Continue reading</a>
+
+          <Link href="/episode/[id]" as={`/episode/${props.item.id}`}>
+              <a className="stretched-link">Vwè épizòd-la</a>
+           </Link>
         </div>
-        <div className="col-auto d-none d-lg-block">
+        <div className="col-auto d-none d-md-block">
           <img className="bd-placeholder-img" width="200" height="200" src={image} />
         </div>
       </div>

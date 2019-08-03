@@ -1,6 +1,6 @@
 const Footer = () => (
     <footer className="footer text-center">
-      <p>&copy; Company 2017</p>
+      <p>&copy; TiMalo - Plume Magique 2019</p>
     </footer>
   )
   

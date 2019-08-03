@@ -1,5 +1,15 @@
 @import "./variables.scss";
 @import "../node_modules/bootstrap-scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,900&display=swap');
+@import "./markdown.scss";
+
+.bg-navbar {
+    background-color: #1c1c1c;
+}
+
+.single-episode {
+    padding: 4rem 2rem;
+}
 
 footer {
     background-color: $white;
@@ -9,11 +19,13 @@ footer {
 }
 
 ul.whereToListen {
-    display: flex;
+    display: block;
     list-style: none;
-    
+    padding-left: 0;
     li {
         margin-right: 14px;
+        display: inline-block;
+        padding-bottom: 0.8em;
     }
 }
 
@@ -37,8 +49,77 @@ ul.whereToListen {
         overflow: auto;
     }
  }
+
+ .rss-episode {
+     h2 {
+        font-family: 'Merriweather', serif;
+        font-size: 1.4em;
+        color: $yellow;
+        padding: 1.2em;
+   }
+     h3 {
+         font-family: 'Merriweather', serif;
+         font-weight: 900;
+         font-size: 1.2em;
+         font-variant: small-caps;
+     }
+
+     p {
+        line-height: 1.4em;
+        font-size: 0.94em;
+        font-family: 'Raleway';         
+     }
+
+     .description {
+         padding-left: 1em;
+         color:$white;
+     }
+
+     a {
+         color: $yellow;
+     }
+
+     a:hover {
+         color: $white;
+     }
+ }
 .topContainer {
     h1 {
         color: $yellow;
     }
 }
+
+.react-h5-audio-player {
+    .flex {
+        background-color: $body-bg !important;
+
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      .toggle-play-wrapper {
+        flex: 1 0 60px;
+        -webkit-box-flex: 1 0 60px;
+        -moz-box-flex: 1 0 60px;
+        -ms-flex: 1 0 60px;
+        .toggle-play-button {
+            // Remember to use !important to overwrite inline styles.
+            background-color: $red !important;
+          }
+        }
+      .progress-bar-wrapper {
+        flex: 10 0 auto;
+        -webkit-box-flex: 10 0 auto;
+        -moz-box-flex: 10 0 auto;
+        -ms-flex: 10 0 auto;
+
+        .indicator {
+            background-color: $yellow !important;
+          }
+          .volumn {
+              border-bottom-color:  $yellow !important;
+          }
+        }
+    }
+  }
+

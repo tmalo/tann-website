@@ -1,38 +1,79 @@
-const WhereToListen = () => (
+import Link from 'next/link';
+
+const icons = {
+    itunes: {
+        src: "../static/icons/itunes.png",
+        name: "Apple Podcasts"
+    },
+
+    breaker: {
+        src: "../static/icons/breaker.png",
+        name: "Breaker"
+    },
+
+    castbox: {
+        src: "../static/icons/castbox.png",
+        name: "Castbox"
+    },
+
+    google: {
+        src: "../static/icons/google_podcasts.png",
+        name: "Google Podcasts"
+    },
+
+    overcast: {
+        src: "../static/icons/overcast.png",
+        name: "Overcast"
+    },
+
+    pocket: {
+        src: "../static/icons/pocket_casts.png",
+        name: "Pocket Casts"
+    },
+
+    radiopublic: {
+        src: "../static/icons/radiopublic.png",
+        name: "Radio Public"
+    },
+
+    spotify: {
+        src: "../static/icons/spotify.png",
+        name: "Spotify"
+    },
+
+    rss: {
+        src: "../static/icons/rss.png",
+        name: "Rss"
+    }
+}
+
+
+const WhereToListen = function (props) {
+    
+    let toshow = []; 
+
+    for (let [k, v] of Object.entries(icons)) {
+        let url = Object.keys(props.links).find(link => link==k);
+        if (url != undefined) {
+            v.url = props.links[k];
+            toshow.push(v);
+        }
+    }
+
+    var content = toshow.map( (v, index) => {
+        return (<li key={index}>
+            <Link href={v.url}>
+                <a><img src={v.src} height="28px" width="28px"
+                alt={v.name} title={v.name}/></a>
+            </Link>
+        </li>);
+    });
+
+    return (
+    
     <ul className="whereToListen">
-        <li>
-            <a href=""><img src="../static/icons/itunes.png" height="28px" width="28px"
-                alt="Apple Podcasts" title="Apple Podcasts"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/breaker.png"  height="28px" width="28px"
-                alt="Breaker" title="Breaker"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/castbox.png" height="28px" width="28px" 
-                alt="Castbox" title="Castbox"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/google_podcasts.png" height="28px" width="28px" 
-                alt="Google Podcasts" title="Google Podcasts"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/overcast.png" height="28px" width="28px" 
-                alt="Overcast" title="Overcast"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/pocket_casts.png" height="28px" width="28px" 
-                alt="Pocket Casts" title="Pocket Casts"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/radiopublic.png" height="28px" width="28px" 
-                alt="Radio Public" title="Radio Public"/></a>
-        </li>
-        <li>
-            <a href=""><img src="../static/icons/spotify.png" height="28px" width="28px" 
-                alt="Spotify" title="Spotify"/></a>
-        </li>
+        {content}
     </ul>    
-)
+)};
 
 export default WhereToListen
