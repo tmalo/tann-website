@@ -2,11 +2,16 @@
 //changing
 const serverless = require('serverless-http');
 const express = require('express')
+var pino = require('express-pino-logger')
 const cors = require('cors')
 const { parsed: localEnv } = require('dotenv').config()
 const routes = require('./modules/routes');
 
+var Logger = require( './modules/Logger');
 const app = express()
+app.use(pino({
+    logger: Logger
+  }))
 
 var bodyParser = require('body-parser');
 
