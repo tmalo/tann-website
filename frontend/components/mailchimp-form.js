@@ -15,7 +15,8 @@ export default class MailchimpForm extends React.Component {
             email: '',
             b_b97a79158f6205e5b1a79a8f0_6623aaab9f: '',
             modalContent: '',
-            modalShow: false
+            modalShow: false,
+            nonce: props.nonce
         };
 
         this.url = props.url;
@@ -47,11 +48,10 @@ export default class MailchimpForm extends React.Component {
             b_b97a79158f6205e5b1a79a8f0_6623aaab9f: this.state.b_b97a79158f6205e5b1a79a8f0_6623aaab9f
           };
         const asstring = JSON.stringify(user);
-        const signature = md5(asstring);
-        Logger.debug('secret key : '+ process.env.CLIENT_SECRETKEY);
+
         var content = { 
           data: user, 
-          signature: sign(signature, process.env.CLIENT_SECRETKEY)
+          nonce: this.state.nonce,
         };
         axios.post(this.server + '/nl/user', content)
         .then((response)=> {
@@ -66,6 +66,7 @@ export default class MailchimpForm extends React.Component {
       })
           .catch(function (error) {
             Logger.error(error);
+            alert(error)
           });
     }
 

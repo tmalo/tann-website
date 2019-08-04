@@ -1,6 +1,7 @@
 import format from 'date-format';
 import Logger from '../utils/logger';
 import Link from 'next/link';
+import getFeed from '../utils/getfeed';
 
 function cleanText(source) {
   const regex = /(<([^>]+)>)/ig;
@@ -34,7 +35,7 @@ const Episode = function (props) {
           <div className="mb-1 text-muted">{strPubDate}</div>
           <p className="card-text mb-auto" dangerouslySetInnerHTML={description} />
 
-          <Link href="/episode/[id]" as={`/episode/${props.item.id}`}>
+          <Link prefetch href="/episode/[id]" as={`/episode/${props.item.id}`}>
               <a className="stretched-link">Vwè épizòd-la</a>
            </Link>
         </div>
@@ -47,15 +48,38 @@ const Episode = function (props) {
     )
 }
 
-const EpisodeList = function(props) {
-    
-    return (
-    <div className="row mb-2">
-        {props.items.map(item =>(
-            <Episode key={item.id} item= {item} image={props.image} />
+class EpisodeList extends React.Component {
+  constructor(props){
+    super(props)
 
-        ))}
- </div>)
+    this.state = {
+      url: props.url,
+      items: [],
+      image: ''
+    }
+  }
+
+  componentDidMount() {
+    Logger.info(this.state.url);
+
+    getFeed(this.state.url)
+    .then(data =>{
+      this.setState({items: data.feed.items, image: data.feed.itunes.image})
+      
+    })
+  }
+  render()
+  {
+    return (
+      <div className="row mb-2">
+      {this.state.items.map(item =>(
+          <Episode key={item.id} item= {item} image={this.state.image} />
+
+      ))}
+    </div>
+    )
+  }
 }
+
 
 export default EpisodeList

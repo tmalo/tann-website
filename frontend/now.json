@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "build": {
+        "env": {
+            "FEED_URL": "https://anchor.fm/s/cb1379c/podcast/rss",
+            "API_SERVER": "https://api.timalo.com",
+            "CLIENT_PUBLICKEY": "@client-publickey",
+            "CLIENT_SECRETKEY": "@client-secretkey",
+            "SERVER_PUBLICKEY": "@server-publickey",
+            "LOGLEVEL": "info"
+        }
+    },
+    "env": {
+        "FEED_URL": "https://anchor.fm/s/cb1379c/podcast/rss",
+        "API_SERVER": "https://api.timalo.com",
+        "CLIENT_PUBLICKEY": "@client-publickey",
+        "CLIENT_SECRETKEY": "@client-secretkey",
+        "SERVER_PUBLICKEY": "@server-publickey",
+        "LOGLEVEL": "info"
+    }
+
+}

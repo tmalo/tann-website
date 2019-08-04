@@ -1,64 +1,56 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import matter from 'gray-matter';
+import getFeed from '../utils/getfeed';
+var fs = require('fs');
+import path from 'path';
 
+var isBrowser=new Function("try {return this===window;}catch(e){ return false;}");
+
+function createFeedFile(filePath) {
+  getFeed(process.env.FEED_URL)
+  .then(feed => {
+    let data = JSON.stringify(feed);
+    fs.writeFileSync( filePath, data);
+  })
+  .catch(err=> {
+    console.log(err);
+  })
+}
 export default class MyApp extends App {
-    static async getInitialProps({ Component, ctx }) {
-        let pageProps = {}
-    
-        if (Component.getInitialProps) {
-          pageProps = await Component.getInitialProps(ctx)
-        }
-    
-        let req = ctx.req;
-        let protocol = 'https:'
-        let host = req ? req.headers.host : '' //window.location.hostname
-        if (host.indexOf('localhost') > -1) {
-          protocol = 'http:'
-        }
-        
-        var location = {protocol: protocol, host: host};
+    constructor(props) {
+      super(props);
 
-        pageProps.location = location;
+      //{ babelrc: false }
 
-        let srcs =require.context('../md', true, /\.md$/);
-
-
-        // Get posts from folder
-        const posts = (p => {
-            const keys = p.keys();
-            const values = keys.map(p);
-            const data = keys.map((key, index) => {
-                // Create slug from filename
-                const slug = key.replace(/^.*[\\\/]/, '').split('.').slice(0, -1).join('.');
-                const value = values[index];
-                // Parse document
-
-                const document = matter(value.default);
-
-                return {
-                    document,
-                    slug
-                };
-            });
-            return data;
-        })(srcs);
-
-        pageProps.docs = posts;
-
-        return { pageProps }
-      }
-    
-    ///
+      // let filePath = 'components/feed.json';
+      // if (!isBrowser())
+      // {
+      //   //createFeedFile(filePath);
+      //   if (fs.existsSync(filePath)) {
+      //     let fStat = fs.statSync(filePath);
+      //     var expireDate = fStat.ctime;
+      //     expireDate.setMinutes(expireDate.getMinutes() + 2);
+      //     if (Date.now() > expireDate)
+      //     createFeedFile(filePath);
+      //   } else {
+      //     createFeedFile(filePath)
+      //   }
+  
+      // }
+      
+      
+    }
 
     ///
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps } = this.props;
 
+
+  
     return (
-      <Container>
-          <Component {...pageProps} />
-      </Container>
+        <Container>
+            <Component {...pageProps} />
+        </Container>
     )
   }
 }

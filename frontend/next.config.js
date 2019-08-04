@@ -7,23 +7,32 @@ const webpack = require('webpack');
 const pino = require("next-pino");
 const rawloader = require('raw-loader');
 
-if (envError) {
-    throw envError;
-}
+// if (envError) {
+//     throw envError;
+// }
 
 const nextConfig = {
   webpack: (config, options) => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: 'empty'
+    }
+
     // modify the `config` here
     config.module.rules.push({
       test: /\.md$/i,
       use: 'raw-loader'
     });
 
-
 	config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
   
   return config;
   },
+  env: {
+    feedURL : process.env.FEED_URL,
+    apiServer : process.env.API_SERVER,
+    clientSecretKey: process.env.CLIENT_SECRETKEY
+  }
 };
 
 module.exports = withPlugins([

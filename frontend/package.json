@@ -3,10 +3,21 @@
   "version": "1.0.0",
   "description": "Site internet pour le Podcast 'Tann & Konprann' de TiMalo",
   "main": "index.js",
+  "bin": "server.js",
+  "pkg": {
+    "assets": [
+      ".next/**/*",
+      "*.scss"
+    ],
+    "scripts": [
+      ".next/dist/**/*.js"
+    ]
+  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "pkg": "pkg . --targets node12-alpine-x64 --out-path pkg"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +45,7 @@
     "react-native-rss-parser": "^1.4.0"
   },
   "devDependencies": {
-    "pino-pretty": "^3.2.0"
+    "pino-pretty": "^3.2.0",
+    "pkg": "^4.4.0"
   }
 }

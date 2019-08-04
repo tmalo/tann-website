@@ -1,48 +1,49 @@
 import Link from 'next/link';
+import path from 'path';
 
 const icons = {
     itunes: {
-        src: "../static/icons/itunes.png",
+        src: path.join(__dirname, "../static/icons/itunes.png"),
         name: "Apple Podcasts"
     },
 
     breaker: {
-        src: "../static/icons/breaker.png",
+        src: path.join(__dirname, "../static/icons/breaker.png"),
         name: "Breaker"
     },
 
     castbox: {
-        src: "../static/icons/castbox.png",
+        src: path.join(__dirname, "../static/icons/castbox.png"),
         name: "Castbox"
     },
 
     google: {
-        src: "../static/icons/google_podcasts.png",
+        src: path.join(__dirname, "../static/icons/google_podcasts.png"),
         name: "Google Podcasts"
     },
 
     overcast: {
-        src: "../static/icons/overcast.png",
+        src: path.join(__dirname, "../static/icons/overcast.png"),
         name: "Overcast"
     },
 
     pocket: {
-        src: "../static/icons/pocket_casts.png",
+        src: path.join(__dirname, "../static/icons/pocket_casts.png"),
         name: "Pocket Casts"
     },
 
     radiopublic: {
-        src: "../static/icons/radiopublic.png",
+        src: path.join(__dirname, "../static/icons/radiopublic.png"),
         name: "Radio Public"
     },
 
     spotify: {
-        src: "../static/icons/spotify.png",
+        src: path.join(__dirname, "../static/icons/spotify.png"),
         name: "Spotify"
     },
 
     rss: {
-        src: "../static/icons/rss.png",
+        src: path.join(__dirname, "../static/icons/rss.png"),
         name: "Rss"
     }
 }

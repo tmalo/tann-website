@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Logger from '../utils/logger'
-import getFeed from '../utils/getfeed';
+import path from 'path';
+import axios from 'axios';
 
 import Layout from '../components/MyLayout';
 import Container from 'react-bootstrap/Container';
@@ -11,8 +12,10 @@ import Image from 'react-bootstrap/Image';
 import WhereToListen from '../components/where-to-listen';
 import MailchimpForm from '../components/mailchimp-form';
 import EpisodeList from '../components/EpisodeList';
+import { PageContext, Meta } from '../components/Meta';
 
 const links = {
+  itunes: 'https://podcasts.apple.com/fr/podcast/tann-konprann/id1474553007',
   rss: "https://anchor.fm/s/cb1379c/podcast/rss",
   breaker: "https://www.breaker.audio/tann-and-konprann",
   google: "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy9jYjEzNzljL3BvZGNhc3QvcnNz",
@@ -27,45 +30,25 @@ const pageTitle = "Tann & Konprann, on pòdkas a TiMalo";
 const pageDescription = "A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa \
   sé on lokazyon pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt lang-la pimyé.";
 
-const meta = (location) => {
-  function absolute(base, relative) {
-    var stack = base.split("/"),
-        parts = relative.split("/");
-    stack.pop(); // remove current file name (or empty string)
-                 // (omit if "base" is the current folder without trailing slash)
-    for (var i=0; i<parts.length; i++) {
-        if (parts[i] == ".")
-            continue;
-        if (parts[i] == "..")
-            stack.pop();
-        else
-            stack.push(parts[i]);
-    }
-    return stack.join("/");
-}
-  return (
-    <>
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@tannkonprann" />
-    <meta name="twitter:creator" content="@timalo_officiel" />
-    <meta property="og:url" content={absolute(`${location.protocol}//${location.host}/`, 'index')} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={pageDescription} />
-    <meta property="og:image" 
-    content={absolute(`${location.protocol}//${location.host}/`, '../static/artwork.jpg')} />     
-    </>   
-  );
-};
-
 const  Index = props => {
-    var server = process.env.API_SERVER || '';
+    var server = process.env.apiServer || '';
 
+    const pageInfo = {
+      title: pageTitle, 
+      description: pageDescription
+    }
+    const metaData = (
+      <PageContext.Provider value={pageInfo}>
+        <Meta />
+      </PageContext.Provider>
+    );
     return (
-        <Layout meta={meta(props.location)} title={pageTitle} links={props.docs}>
+        
+        <Layout meta={metaData} title={pageTitle} links={props.docs}>
           <Jumbotron>
               <Container className="topContainer d-flex">
                 <Row>
-                  <Col sm={4}><Image src="../static/artwork.jpg" fluid rounded /></Col>
+                  <Col sm={4}><Image src={path.join(__dirname, "../static/artwork.jpg")} fluid rounded /></Col>
                   <Col sm={6}>
                     <h1 className="display-3">Tann & Konprann</h1>
                     <p lang="cpf-gp">A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa sé on lokazyon 
@@ -87,14 +70,14 @@ const  Index = props => {
                 <div className="row justify-content-md-center newsletter">
                     <h2>Enskri-w adan kourilèt-la</h2>
                     <div className="w-100"></div>
-                    <MailchimpForm  server = {server}/>
+                    <MailchimpForm  server = {server} nonce={props.nonce}/>
                 </div>
               </Container>
               </div>
               <Container className="episodes">
                 <h2 className="display-4">epizod</h2>
                 <div id="episodeBlock">
-                  <EpisodeList items={props.feed.items} image={props.feed.itunes.image}/>
+                  <EpisodeList url={process.env.feedURL}/>
                 </div>
             </Container>
       </Layout>
@@ -103,7 +86,9 @@ const  Index = props => {
 
   Index.getInitialProps = async function() {
 
-    return await getFeed(process.env.FEED_URL);
+    var resp =await axios.get(process.env.apiServer + '/secret');
+    const data = await resp.data.results;
+    return {nonce: data.nonce};
   };
   
 export default Index;
