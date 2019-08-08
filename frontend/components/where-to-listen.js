@@ -42,6 +42,10 @@ const icons = {
         name: "Spotify"
     },
 
+    podplayer: {
+        src: path.join(__dirname, "../static/icons/podplayer.png"),
+        name: "Pod Plaler"
+    },
     rss: {
         src: path.join(__dirname, "../static/icons/rss.png"),
         name: "Rss"

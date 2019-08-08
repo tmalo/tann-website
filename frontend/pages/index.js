@@ -16,13 +16,14 @@ import { PageContext, Meta } from '../components/Meta';
 
 const links = {
   itunes: 'https://podcasts.apple.com/fr/podcast/tann-konprann/id1474553007',
+  castbox: 'https://castbox.fm/channel/id2227069',
   rss: "https://anchor.fm/s/cb1379c/podcast/rss",
   breaker: "https://www.breaker.audio/tann-and-konprann",
   google: "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy9jYjEzNzljL3BvZGNhc3QvcnNz",
   pocket: "https://pca.st/y5r0",
   radiopublic: "https://radiopublic.com/tann-konprann-6BJw3M",
   spotify: "https://open.spotify.com/show/1pw9hzE4mgTqsZN5rcQRCY",
-
+  podplayer: "http://podplayer.net/?podId=2414806"
 }
 
 
