@@ -1,7 +1,7 @@
 import React from 'react';
 import path from 'path';
 
-const data = {protocol: "https", host: "tann.timalo.com"};
+const data = {protocol: "https:", host: "tann.timalo.com"};
 
 export const LocationContext = React.createContext(data);
 const pageData = {title: '', description: ''};

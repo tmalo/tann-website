@@ -12,10 +12,40 @@
 }
 
 footer {
-    background-color: $white;
+    background-color: $gray-400;
     color: $body-bg;
     @extend .pt-2;
+    @extend .px-4;
     @extend .pb-4;
+    
+    ul {
+        list-style-type: none;
+        padding-inline-start: 20px;
+    }
+
+    ul.links {
+        font-family: 'Raleway';
+        font-weight: 600;
+        text-transform: uppercase;
+
+        li {
+            margin-right: 14px;
+            display: inline-block;
+            padding-bottom: 0.8em;
+        }
+    }
+
+    h4 {
+        font-family: 'Merriweather', serif;
+        font-size: 1.2em !important;
+    }
+    a {
+        color: $black;  
+    }
+
+    a:hover {
+        color: $yellow;
+    }
 }
 
 ul.whereToListen {
