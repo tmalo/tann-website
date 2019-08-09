@@ -88,26 +88,49 @@ router.post('/nl/user', cors(), check_nonce(), async function (req, res){
 
     Logger.info('received data is valid');
 
-    var data = req.body.data;
-    res.status(200).json({
-        result: 'success',
+    let data = {};
+    try {
+        Logger.info(req.body.data);
+         data = JSON.parse(req.body.data);
+        }
+    catch(err) {
+        Logger.error('Parse failed :'+err);
+        res.status(500).json(err);
+        return;
+    }
+
+    var path = `/lists/${process.env.MAILCHIMP_LIST_ID}/members/`;
+
+    var postcontent = {
+        email_address: data.EMAIL,
         status: 'subscribed',
-        results: {}
-    });
+        merge_fields: {
+            FNAME: data.FNAME,
+            LNAME: data.LNAME
+        }
+    };
 
-    // var path = `/lists/${process.env.MAILCHIMP_LIST_ID}/members/`;
+    Logger.info(postcontent);
+    
+    mailchimp.post(path, postcontent)
+        .then(results => {
+            Logger.info(results);
+           res.json({
+               result: 'success',
+               status: results.status,
+               results: results
+            });
+        })
+        .catch( err=> {
+            Logger.error('Mailchimp error:' + err);
+            res.status(500).json(err)
+        });
 
-    // mailchimp.post(path, data)
-    //     .then(results => {
-    //        res.json({
-    //            result: 'success',
-    //            status: results.status,
-    //            results: results
-    //         });
-    //     })
-    //     .catch( err=> {
-    //         res.status(500).json(err)
-    //     });
+    // res.status(200).json({
+    //     result: 'success',
+    //     status: 'subscribed',
+    //     results: {}
+    // });
 });
 
 module.exports = router;
