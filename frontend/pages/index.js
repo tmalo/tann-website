@@ -23,7 +23,8 @@ const links = {
   pocket: "https://pca.st/y5r0",
   radiopublic: "https://radiopublic.com/tann-konprann-6BJw3M",
   spotify: "https://open.spotify.com/show/1pw9hzE4mgTqsZN5rcQRCY",
-  podplayer: "http://podplayer.net/?podId=2414806"
+  podplayer: "http://podplayer.net/?podId=2414806",
+  stitcher: "https://www.stitcher.com/podcast/timalo/tann-konprann"
 }
 
 

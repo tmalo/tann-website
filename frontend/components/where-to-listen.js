@@ -49,6 +49,10 @@ const icons = {
     rss: {
         src: path.join(__dirname, "../static/icons/rss.png"),
         name: "Rss"
+    },
+    stitcher: {
+        src: path.join(__dirname, "../static/icons/stitcher.png"),
+        name: "Stitcher"
     }
 }
 
