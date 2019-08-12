@@ -29,7 +29,7 @@ const links = {
 
 
 const pageTitle = "Tann & Konprann, on pòdkas a TiMalo";
-const pageDescription = "A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa \
+const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-lasa \
   sé on lokazyon pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt lang-la pimyé.";
 
 const  Index = props => {
@@ -53,7 +53,7 @@ const  Index = props => {
                   <Col sm={4}><Image src={path.join(__dirname, "../static/artwork.jpg")} fluid rounded /></Col>
                   <Col sm={6}>
                     <h1 className="display-3">Tann & Konprann</h1>
-                    <p lang="cpf-gp">A pa tout moun ki ka tann kréyòl touléjou. Pòdkas-la sa sé on lokazyon 
+                    <p lang="cpf-gp">A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-lasa sé on lokazyon 
                       pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt 
                       lang-la pimyé. </p>
 
