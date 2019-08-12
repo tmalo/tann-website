@@ -88,10 +88,10 @@ router.post('/nl/user', cors(), check_nonce(), async function (req, res){
 
     Logger.info('received data is valid');
 
-    let data = {};
+    let data = req.body.data;
     try {
         Logger.info(req.body.data);
-         data = JSON.parse(req.body.data);
+         //data = JSON.parse(req.body.data);
         }
     catch(err) {
         Logger.error('Parse failed :'+err);
