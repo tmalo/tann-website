@@ -1,15 +1,18 @@
 import React from 'react';
 import path from 'path';
 
-const data = {protocol: "https:", host: "tann.timalo.com"};
-
-export const LocationContext = React.createContext(data);
 const pageData = {title: '', description: ''};
 export const PageContext = React.createContext(pageData);
 
 export class Meta extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            location: {
+                protocol: "https:", 
+                host: "tann.timalo.com"
+            }
+        };
     }
 
     absolute(base, relative) {
@@ -45,55 +48,49 @@ export class Meta extends React.Component {
     }
 
     renderEpisode(item) {
+        let location = this.state.location;
         return (
-            <LocationContext.Consumer>
-                {location => (
-                    <PageContext.Consumer>
-                        {page => (
-                            <>
-                            <meta name="twitter:card" content="player" />
-                            <meta name="twitter:site" content="@tannkonprann" />
-                            <meta name="twitter:creator" content="@timalo_officiel" />
-                            <meta property="og:url" 
-                            content={this.absolute(`${location.protocol}//${location.host}/`, 
-                            path.join(__dirname, `episode/${item.id}`))}  />
-                            <meta property="og:title" content={item.title} />
-                            <meta property="og:description" content={page.description} />
-                            <meta property="og:image" content={item.itunes.image} />     
-                            <meta property="twitter:player" 
-                            content={this.absolute(`${location.protocol}//${location.host}/`, `frame/${item.id}`)}  />
-                            <meta name="twitter:player:width" content="480" />
-                            <meta name="twitter:player:height" content="480" />
-                            </>   
+                <PageContext.Consumer>
+                    {page => (
+                        <>
+                        <meta name="twitter:card" content="player" />
+                        <meta name="twitter:site" content="@tannkonprann" />
+                        <meta name="twitter:creator" content="@timalo_officiel" />
+                        <meta property="og:url" 
+                        content={this.absolute(`${location.protocol}//${location.host}/`, 
+                        path.join(__dirname, `episode/${item.id}`))}  />
+                        <meta property="og:title" content={item.title} />
+                        <meta property="og:description" content={page.description} />
+                        <meta property="og:image" content={item.itunes.image} />     
+                        <meta property="twitter:player" 
+                        content={this.absolute(`${location.protocol}//${location.host}/`, `frame/${item.id}`)}  />
+                        <meta name="twitter:player:width" content="480" />
+                        <meta name="twitter:player:height" content="480" />
+                        </>   
 
-                        )}
-                    </PageContext.Consumer>
-                )}
-            </LocationContext.Consumer>
+                    )}
+                </PageContext.Consumer>
           );        
     }
     renderSummary() {
+        let location = this.state.location;
         return (
-            <LocationContext.Consumer>
-                {location => (
-                    <PageContext.Consumer>
-                        {page => (
-                            <>
-                            <meta name="twitter:card" content="summary" />
-                            <meta name="twitter:site" content="@tannkonprann" />
-                            <meta name="twitter:creator" content="@timalo_officiel" />
-                            <meta property="og:url" content={this.absolute(`${location.protocol}//${location.host}/`, 'index')} />
-                            <meta property="og:title" content={page.title} />
-                            <meta property="og:description" content={page.description} />
-                            <meta property="og:image" 
-                            content={this.absolute(`${location.protocol}//${location.host}/`, 
-                            path.join(__dirname, '../static/artwork.jpg'))} />     
-                            </>   
+                <PageContext.Consumer>
+                    {page => (
+                        <>
+                        <meta name="twitter:card" content="summary" />
+                        <meta name="twitter:site" content="@tannkonprann" />
+                        <meta name="twitter:creator" content="@timalo_officiel" />
+                        <meta property="og:url" content={this.absolute(`${location.protocol}//${location.host}/`, 'index')} />
+                        <meta property="og:title" content={page.title} />
+                        <meta property="og:description" content={page.description} />
+                        <meta property="og:image" 
+                        content={this.absolute(`${location.protocol}//${location.host}/`, 
+                        path.join(__dirname, '../static/artwork.jpg'))} />     
+                        </>   
 
-                        )}
-                    </PageContext.Consumer>
-                )}
-            </LocationContext.Consumer>
+                    )}
+                </PageContext.Consumer>
           );        
     }
 }
