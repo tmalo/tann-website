@@ -35,7 +35,7 @@ const Episode = function (props) {
           <div className="mb-1 text-muted">{strPubDate}</div>
           <p className="card-text mb-auto" dangerouslySetInnerHTML={description} />
 
-          <Link prefetch href="/episode/[id]" as={`/episode/${props.item.id}`}>
+          <Link href="/episode/[id]" as={`/episode/${props.item.id}`}>
               <a className="stretched-link">Vwè épizòd-la</a>
            </Link>
         </div>

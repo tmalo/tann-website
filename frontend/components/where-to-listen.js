@@ -71,7 +71,7 @@ const WhereToListen = function (props) {
 
     var content = toshow.map( (v, index) => {
         return (<li key={index}>
-            <Link href={v.url}>
+            <Link href={v.url} prefetch={false}>
                 <a><img src={v.src} height="28px" width="28px"
                 alt={v.name} title={v.name}/></a>
             </Link>

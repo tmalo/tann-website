@@ -11,7 +11,7 @@ const MdPages = function(props) {
                 {pages => (
                     pages.map(({ document: { data }, slug }) => (
                         <li className={props.itemClass}  key={slug}>
-                        <Link prefetch href="/markdown/[id]" as={`/markdown/${slug}`}>
+                        <Link href="/markdown/[id]" as={`/markdown/${slug}`}>
                         <a className={props.linkClass}>{data.title}</a>
                         </Link>
                         </li>

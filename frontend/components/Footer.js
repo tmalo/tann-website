@@ -12,17 +12,17 @@ const Footer = () => (
       <Col sm={3}>
         <ul className="social">
           <li>
-            <Link href="https://twitter.com/TannKonprann"><a>
+            <Link href="https://twitter.com/TannKonprann" prefetch={false}><a>
             <FontAwesomeIcon icon={['fab', 'twitter']} /> @TannKonprann
           </a></Link>
           </li>
           <li>
-          <Link href="https://twitter.com/timalo_officiel"><a>
+          <Link href="https://twitter.com/timalo_officiel" prefetch={false}><a>
             <FontAwesomeIcon icon={['fab', 'twitter']} /> @timalo_officiel
           </a></Link>
           </li>
           <li>
-            <Link href="https://www.instagram.com/timalo_officiel/"><a>
+            <Link href="https://www.instagram.com/timalo_officiel/" prefetch={false}><a>
               <FontAwesomeIcon icon={['fab', 'instagram']} /> @timalo_officiel
             </a></Link>
           </li>
@@ -33,16 +33,16 @@ const Footer = () => (
         <Col>
           <ul className="links">
             <li>
-              <Link href="https://www.timalo.com/"><a>
+              <Link href="https://www.timalo.com/" prefetch={false}><a>
                 Le Blog
               </a></Link>
             </li>
             <li>
-              <Link href="https://www.timalo.com/boutique/"><a>
+              <Link href="https://www.timalo.com/boutique/" prefetch={false}><a>
                 La Boutique</a></Link>
             </li>
             <li>
-              <Link href="https://www.timalo.com/decouvrir-timalo/"><a>
+              <Link href="https://www.timalo.com/decouvrir-timalo/" prefetch={false}><a>
                 Découvrir TiMalo</a></Link>
             </li>
           </ul>
