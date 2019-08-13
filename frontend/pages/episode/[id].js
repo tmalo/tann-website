@@ -64,7 +64,7 @@ const Post = props => {
   
   Post.getInitialProps = async function(context) {
 
-    let rssfeed = await getFeed(process.env.FEED_URL);
+    let rssfeed = await getFeed(process.env.feedURL);
     var items= rssfeed.feed.items;
 
     var id = context.query.id;
