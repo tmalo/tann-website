@@ -74,7 +74,10 @@ router.get('/secret', (request, response) => {
     var data = nacl.util.encodeBase64(nacl.box(uMessage, nonce, clpbk, svsck));
     Logger.info(data);
 
-    response.status(200).json({
+    response.status(200)
+    .header('Access-Control-Allow-Origin','*')
+    .header('Access-Control-Allow-Headers','*')
+    .json({
         result: 'success',
         results: {nonce: data}
     });
