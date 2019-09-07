@@ -7,6 +7,11 @@ const icons = {
         name: "Apple Podcasts"
     },
 
+    spotify: {
+        src: path.join(__dirname, "../static/icons/spotify.png"),
+        name: "Spotify"
+    },
+
     breaker: {
         src: path.join(__dirname, "../static/icons/breaker.png"),
         name: "Breaker"
@@ -37,11 +42,10 @@ const icons = {
         name: "Radio Public"
     },
 
-    spotify: {
-        src: path.join(__dirname, "../static/icons/spotify.png"),
-        name: "Spotify"
+    castro: {
+        src: path.join(__dirname, "../static/icons/castro.png"),
+        name: "Castro"
     },
-
     podplayer: {
         src: path.join(__dirname, "../static/icons/podplayer.png"),
         name: "Pod Plaler"

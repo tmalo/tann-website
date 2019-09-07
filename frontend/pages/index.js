@@ -24,6 +24,7 @@ const links = {
   radiopublic: "https://radiopublic.com/tann-konprann-6BJw3M",
   spotify: "https://open.spotify.com/show/1pw9hzE4mgTqsZN5rcQRCY",
   podplayer: "http://podplayer.net/?podId=2414806",
+  castro: "https://castro.fm/itunes/1474553007",
   stitcher: "https://www.stitcher.com/podcast/timalo/tann-konprann"
 }
 
