@@ -28,7 +28,7 @@ export class Meta extends React.Component {
             else
                 stack.push(parts[i]);
         }
-        return stack.join("/");
+        return stack.join("/").replace(/(?<!:)\/\//g, "/");
     }
 
     configure(source) {
