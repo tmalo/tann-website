@@ -28,7 +28,7 @@ const Header = (props) => (
       </div>
 
       <div>
-      <Link href="https://www.timalo.com">
+      <Link href="https://www.timalo.com" prefetch={false}>
             <a className="nav-link">timalo.com</a>
             </Link>
 
