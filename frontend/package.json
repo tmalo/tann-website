@@ -1,55 +1,44 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
-  "description": "Site internet pour le Podcast 'Tann & Konprann' de TiMalo",
+  "version": "1.1.0",
+  "description": "",
   "main": "index.js",
-  "bin": "server.js",
-  "pkg": {
-    "assets": [
-      ".next/**/*",
-      "*.scss"
-    ],
-    "scripts": [
-      ".next/dist/**/*.js"
-    ]
-  },
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "pkg": "pkg . --targets node12-alpine-x64 --out-path pkg"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-brands-svg-icons": "^5.11.2",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@zeit/next-sass": "^1.0.1",
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "bootstrap-scss": "^4.4.1",
-    "date-format": "^2.1.0",
+    "date-format": "^3.0.0",
     "dotenv": "^8.2.0",
     "gray-matter": "^4.0.2",
     "md5": "^2.2.1",
     "nacl-signature": "^2.0.2",
-    "next": "^9.1.5",
+    "next": "^9.2.1",
     "next-compose-plugins": "^2.2.0",
     "next-pino": "0.0.1",
-    "node-sass": "^4.13.0",
-    "pino": "^5.14.0",
-    "raw-loader": "^3.1.0",
+    "node-sass": "^4.13.1",
+    "pino": "^5.16.0",
+    "raw-loader": "^4.0.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "react-h5-audio-player": "^1.2.3",
-    "react-markdown": "^4.2.2",
-    "react-native-rss-parser": "^1.4.0"
+    "react-h5-audio-player": "^2.3.0",
+    "react-markdown": "^4.3.1",
+    "react-native-rss-parser": "^1.4.0",
+    "webpack": "^4.41.5"
   },
   "devDependencies": {
-    "pino-pretty": "^3.5.0",
-    "pkg": "^4.4.1"
+    "pino-pretty": "^3.5.0"
   }
 }

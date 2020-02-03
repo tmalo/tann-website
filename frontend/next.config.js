@@ -24,9 +24,9 @@ const nextConfig = {
       use: 'raw-loader'
     });
 
-	config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+    config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
   
-  return config;
+    return config;
   },
   env: {
     feedURL : process.env.FEED_URL,
