@@ -2,6 +2,7 @@
 @import "../node_modules/bootstrap-scss/bootstrap.scss";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,900&display=swap');
 @import "./markdown.scss";
+@import "./audioplayer.scss";
 
 .bg-navbar {
     background-color: #1c1c1c;
@@ -119,37 +120,4 @@ ul.whereToListen {
     }
 }
 
-.react-h5-audio-player {
-    .flex {
-        background-color: $body-bg !important;
-
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      .toggle-play-wrapper {
-        flex: 1 0 60px;
-        -webkit-box-flex: 1 0 60px;
-        -moz-box-flex: 1 0 60px;
-        -ms-flex: 1 0 60px;
-        .toggle-play-button {
-            // Remember to use !important to overwrite inline styles.
-            background-color: $red !important;
-          }
-        }
-      .progress-bar-wrapper {
-        flex: 10 0 auto;
-        -webkit-box-flex: 10 0 auto;
-        -moz-box-flex: 10 0 auto;
-        -ms-flex: 10 0 auto;
-
-        .indicator {
-            background-color: $yellow !important;
-          }
-          .volumn {
-              border-bottom-color:  $yellow !important;
-          }
-        }
-    }
-  }
 
