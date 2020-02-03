@@ -28,7 +28,9 @@ export class Meta extends React.Component {
             else
                 stack.push(parts[i]);
         }
-        return stack.join("/").replace(/(?<!:)\/\//g, "/");
+        const regex = /([^:])\/\//gi;
+        
+        return stack.join("/").replace(regex, "$1/");
     }
 
     configure(source) {
