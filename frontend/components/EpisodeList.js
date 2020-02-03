@@ -35,7 +35,7 @@ const Episode = function (props) {
           <div className="mb-1 text-muted">{strPubDate}</div>
           <p className="card-text mb-auto" dangerouslySetInnerHTML={description} />
 
-          <Link href="/episode/[id]" as={`/episode/${props.item.id}`}>
+          <Link href="/episode/[id]" as={`/episode/${props.item.id}`} >
               <a className="stretched-link">Vwè épizòd-la</a>
            </Link>
         </div>
@@ -52,30 +52,20 @@ class EpisodeList extends React.Component {
   constructor(props){
     super(props)
 
-    this.state = {
-      url: props.url,
-      items: [],
-      image: ''
-    }
   }
 
   componentDidMount() {
-    Logger.info(this.state.url);
-
-    getFeed(this.state.url)
-    .then(data =>{
-      this.setState({items: data.feed.items, image: data.feed.itunes.image})
-      
-    })
   }
   render()
   {
+
+    const list = this.props.items.map((item, index) => (
+      <Episode key={index} item= {item} image={this.props.image} />
+    ))
+
     return (
       <div className="row mb-2">
-      {this.state.items.map(item =>(
-          <Episode key={item.id} item= {item} image={this.state.image} />
-
-      ))}
+        {list}        
     </div>
     )
   }

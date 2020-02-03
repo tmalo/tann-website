@@ -14,6 +14,9 @@ import MailchimpForm from '../components/mailchimp-form';
 import EpisodeList from '../components/EpisodeList';
 import { PageContext, Meta } from '../components/Meta';
 
+import getFeed from '../utils/getfeed';
+
+
 const links = {
   itunes: 'https://podcasts.apple.com/fr/podcast/tann-konprann/id1474553007',
   castbox: 'https://castbox.fm/channel/id2227069',
@@ -33,7 +36,38 @@ const pageTitle = "Tann & Konprann, on pòdkas a TiMalo";
 const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-lasa \
   sé on lokazyon pou nou tann lang-la, dékouvè tèks é lokans a makèdpawòl é konnèt lang-la pimyé.";
 
-const  Index = props => {
+  class Index extends React.Component {
+    constructor(props){
+      super(props)
+  
+      this.state = {
+        nonce: '',
+        items: [],
+        image: ''
+      }
+
+      this.docs = props.docs;
+  
+      this.loadData()
+  
+    }
+  
+    
+    async loadData() {
+      var resp =await axios.get(process.env.apiServer + '/secret');
+      const data = await resp.data.results;
+      this.setState({nonce: data.nonce})
+
+      Logger.info(process.env.feedURL);
+  
+      await getFeed(process.env.feedURL)
+      .then(data =>{
+        this.setState({items: data.feed.items, image: data.feed.itunes.image})
+        
+      })
+    }
+  
+  render() {
     var server = process.env.apiServer || '';
 
     const pageInfo = {
@@ -45,9 +79,11 @@ const  Index = props => {
         <Meta />
       </PageContext.Provider>
     );
+    
+    
     return (
         
-        <Layout meta={metaData} title={pageTitle} links={props.docs}>
+        <Layout meta={metaData} title={pageTitle} links={this.docs}>
           <Jumbotron>
               <Container className="topContainer d-flex">
                 <Row>
@@ -73,25 +109,20 @@ const  Index = props => {
                 <div className="row justify-content-md-center newsletter">
                     <h2>Enskri-w adan kourilèt-la</h2>
                     <div className="w-100"></div>
-                    <MailchimpForm  server = {server} nonce={props.nonce}/>
+                    <MailchimpForm  server = {server} nonce={this.nonce}/>
                 </div>
               </Container>
               </div>
               <Container className="episodes">
                 <h2 className="display-4">epizod</h2>
                 <div id="episodeBlock">
-                  <EpisodeList url={process.env.feedURL}/>
+                  <EpisodeList items ={this.state.items} image = {this.state.image} />
                 </div>
             </Container>
       </Layout>
     );
+  };
+
   }
 
-  Index.getInitialProps = async function() {
-
-    var resp =await axios.get(process.env.apiServer + '/secret');
-    const data = await resp.data.results;
-    return {nonce: data.nonce};
-  };
-  
 export default Index;
