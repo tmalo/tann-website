@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-brands-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
     "bootstrap-scss": "^4.4.1",
@@ -24,21 +24,21 @@
     "gray-matter": "^4.0.2",
     "md5": "^2.2.1",
     "nacl-signature": "^2.0.2",
-    "next": "^9.2.1",
+    "next": "^9.3.0",
     "next-compose-plugins": "^2.2.0",
     "next-pino": "0.0.1",
     "node-sass": "^4.13.1",
-    "pino": "^5.16.0",
+    "pino": "^5.17.0",
     "raw-loader": "^4.0.0",
-    "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.16",
-    "react-dom": "^16.12.0",
-    "react-h5-audio-player": "^2.3.0",
+    "react": "^16.13.0",
+    "react-bootstrap": "^1.0.0-beta.17",
+    "react-dom": "^16.13.0",
+    "react-h5-audio-player": "^2.4.2",
     "react-markdown": "^4.3.1",
     "react-native-rss-parser": "^1.4.0",
-    "webpack": "^4.41.5"
+    "webpack": "^4.42.0"
   },
   "devDependencies": {
-    "pino-pretty": "^3.5.0"
+    "pino-pretty": "^3.6.1"
   }
 }
