@@ -4,15 +4,16 @@ import path from 'path';
 import axios from 'axios';
 
 import Layout from '../components/MyLayout';
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import WhereToListen from '../components/where-to-listen';
-import MailchimpForm from '../components/mailchimp-form';
 import EpisodeList from '../components/EpisodeList';
 import { PageContext, Meta } from '../components/Meta';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import getFeed from '../utils/getfeed';
 
@@ -54,9 +55,9 @@ const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-la
   
     
     async loadData() {
-      var resp =await axios.get(process.env.apiServer + '/secret');
-      const data = await resp.data.results;
-      this.setState({nonce: data.nonce})
+      //var resp =await axios.get(process.env.apiServer + '/secret');
+      //const data = await resp.data.results;
+      //this.setState({nonce: data.nonce})
 
       Logger.info(process.env.feedURL);
   
@@ -85,7 +86,7 @@ const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-la
         
         <Layout meta={metaData} title={pageTitle} links={this.docs}>
           <Jumbotron>
-              <Container className="topContainer d-flex">
+              <Container className="topContainer ">
                 <Row>
                   <Col sm={4}><Image src={path.join(__dirname, "../static/artwork.jpg")} fluid rounded /></Col>
                   <Col sm={6}>
@@ -102,17 +103,18 @@ const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-la
                     <WhereToListen links={links} />
                   </Col>
                 </Row>
+                <Row className="justify-content-md-center">
+                  <Col sm={4}>&nbsp;</Col>
+                  <Col sm={6} >
+                  <Button variant="light" href="https://discord.gg/HzX9j4k" >
+                  <FontAwesomeIcon icon={['fa', 'comment-dots']}/> &nbsp; 
+                    Vin ban mwen santiman a-w !
+                  </Button>
+                  </Col>
+                </Row>
               </Container>
               </Jumbotron>
-            <div className="newsletter">
-              <Container>
-                <div className="row justify-content-md-center newsletter">
-                    <h2>Enskri-w adan kourilèt-la</h2>
-                    <div className="w-100"></div>
-                    <MailchimpForm  server = {server} nonce={this.nonce}/>
-                </div>
-              </Container>
-              </div>
+
               <Container className="episodes">
                 <h2 className="display-4">epizod</h2>
                 <div id="episodeBlock">
