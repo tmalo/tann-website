@@ -108,7 +108,7 @@ const pageDescription = "A pa toutmoun ki ka tann kréyòl touléjou. Pòdkas-la
                   <Col sm={6} >
                   <Button variant="light" href="https://discord.gg/HzX9j4k" >
                   <FontAwesomeIcon icon={['fa', 'comment-dots']}/> &nbsp; 
-                    Vin ban mwen santiman a-w !
+                    Ban‑mwen santiman a‑w&nbsp;!
                   </Button>
                   </Col>
                 </Row>
