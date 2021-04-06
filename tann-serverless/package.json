@@ -19,7 +19,9 @@
     "mailchimp-api-v3-next": "^0.1.2",
     "md5": "^2.2.1",
     "nacl-signature": "^2.0.1",
+    "npm": "^7.6.2",
     "pino": "^5.13.1",
+    "serverless": "^2.29.0",
     "serverless-http": "^2.0.2",
     "tweetnacl": "^1.0.1",
     "tweetnacl-util": "^0.15.0"
