@@ -4,5 +4,24 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {},
+	"launch": {
+		"configurations": [
+			{
+				"type": "aws-sam",
+				"request": "direct-invoke",
+				"name": "tann-website:utils/markdownToHtml.markdownToHtml (nodejs12.x)",
+				"invokeTarget": {
+					"target": "code",
+					"projectRoot": "${workspaceFolder}/frontend",
+					"lambdaHandler": "utils/markdownToHtml.markdownToHtml"
+				},
+				"lambda": {
+					"runtime": "nodejs12.x",
+					"payload": {},
+					"environmentVariables": {}
+				}
+			}
+		]
+	}
 }
