@@ -5,7 +5,7 @@ import MdPages from './mdpages';
 const Header = (props) => (
   <header>
     <nav className="navbar navbar-expand-md navbar-dark bg-navbar">
-      <Link href="/index"  prefetch={false}>
+      <Link href="/"  prefetch={false}>
         <a className="navbar-brand"><Image src='../static/logo.png' height='28px' /></a>
       </Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@ const Header = (props) => (
         <ul className="navbar-nav mr-auto">
 
           <li className="nav-item active">
-          <Link href="/index">
+          <Link href="/">
             <a className="nav-link">Home <span className="sr-only">(current)</span></a>
             </Link>
           </li>

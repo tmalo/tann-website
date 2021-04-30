@@ -13,7 +13,8 @@ import Image from 'react-bootstrap/Image';
 import WhereToListen from '../components/where-to-listen';
 import EpisodeList from '../components/EpisodeList';
 import { PageContext, Meta } from '../components/Meta';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 
 import getFeed from '../utils/getfeed';
 

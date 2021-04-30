@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
 
-import stylesheet from '../styles/main.scss'
+//import stylesheet from '../styles/main.scss'
 
 const Layout = props => (
   <div>

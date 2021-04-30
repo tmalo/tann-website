@@ -2,6 +2,7 @@ import format from 'date-format';
 import Logger from '../utils/logger';
 import Link from 'next/link';
 import getFeed from '../utils/getfeed';
+import React from 'react';
 
 function cleanText(source) {
   const regex = /(<([^>]+)>)/ig;
