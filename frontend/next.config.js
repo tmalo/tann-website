@@ -13,6 +13,7 @@ const rawloader = require('raw-loader');
 // }
 
 module.exports = {
+  webpack5: false,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Note: we provide webpack above so you should not `require` it
     // Perform customizations to webpack config
